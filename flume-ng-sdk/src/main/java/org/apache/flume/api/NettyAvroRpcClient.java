@@ -724,7 +724,7 @@ implements RpcClient {
               keystore.load(truststoreStream, truststorePassword.toCharArray());
             }
 
-            TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
+            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             // null keystore is OK, with SunX509 it defaults to system CA Certs
             // see http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager
             tmf.init(keystore);
