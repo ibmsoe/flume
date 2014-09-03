@@ -870,7 +870,7 @@ public class TestAvroSink {
         ks.load(new FileInputStream(keystore), keystorePassword.toCharArray());
 
         // Set up key manager factory to use our key store
-        KeyManagerFactory kmf = KeyManagerFactory.getInstance(getAlgorithm());
+        KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
         kmf.init(ks, keystorePassword.toCharArray());
 
         SSLContext serverContext = SSLContext.getInstance("TLS");
