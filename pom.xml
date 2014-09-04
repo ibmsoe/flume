@@ -316,14 +316,6 @@ limitations under the License.
             <scope>test</scope>
           </dependency>
 
-	  <dependency>
-	    <groupId>org.xerial.snappy</groupId>
-	    <artifactId>snappy-java</artifactId>
-	    <version>1.1.1</version>
-	    <type>jar</type>
-	    <scope>compile</scope>
-	  </dependency>
-
           <!-- only compatible with hadoop-2 -->
           <dependency>
             <groupId>org.apache.flume.flume-ng-sinks</groupId>
@@ -1276,6 +1268,12 @@ limitations under the License.
         <groupId>org.kitesdk</groupId>
         <artifactId>kite-data-core</artifactId>
         <version>${kite.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.xerial.snappy</groupId>
+        <artifactId>snappy-java</artifactId>
+        <version>1.1.1</version>
       </dependency>
 
     </dependencies>
