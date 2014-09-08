@@ -48,3 +48,38 @@ To compile Flume, run `mvn compile`.
 To build a distribution, run `mvn install`.
 
 The final Flume distribution artifacts will be in $project/flume-ng-dist/target/.
+
+h2. Flume for Linux on Power
+
+Environment:
+Maven 3.2.3 from http://maven.apache.org/download.cgi
+untar apache-maven-3.2.3-bin.tar.gz into /opt
+and set:
+export M2_HOME=/opt/apache-maven-3.2.3
+export M2=$M2_HOME/bin
+PATH=$M2:$PATH
+
+Prerequisite:
+Install hadoop 2.4.1 from ibmsoe repository https://github.com/ibmsoe/hadoop-common
+#git clone https://github.com/ibmsoe/hadoop-common
+#cd hadoop-common
+#mvn install -Pnative -DskipTests -Drequire.snappy
+
+Setting:
+export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
+umask 0022
+ulimit -n 9000
+ulimit -u 63017
+export JAVA_HOME=/home/jdk/ibm/ibm-java-ppc64-71 (with JVM IBM for RHEL 7)
+
+Build Flume for Linux on Power:
+extract flume sources from https://github.com/ibmsoe/flume
+#git clone https://github.com/ibmsoe/flume.git
+#cd flume
+#mvn clean
+#mvn compile -Dhadoop.profile=2
+#mvn install -DskipTests -Dhadoop.profile=2
+
+Test Flume for Linux on Power:
+#mvn test -fn -Dhadoop.profile=2
+
